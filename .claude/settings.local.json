@@ -13,7 +13,15 @@
       "Bash(gh repo view:*)",
       "Bash(cp:*)",
       "Bash(git push:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(npm create:*)",
+      "Bash(true)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(git reset:*)"
     ],
     "deny": []
   }
