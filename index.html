@@ -816,6 +816,78 @@
             color: #000;
         }
         
+        .floating-info-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .floating-info-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+        }
+        
+        .quick-info-panel {
+            position: fixed;
+            bottom: 160px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 998;
+        }
+        
+        .quick-info-panel.show {
+            transform: translateX(0);
+        }
+        
+        .quick-info-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-info-item:hover {
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .quick-info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .quick-info-title {
+            font-weight: bold;
+            color: #8b6f47;
+            margin-bottom: 5px;
+        }
+        
+        .quick-info-desc {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
         .map-image {
             width: 100%;
             max-width: 700px;
@@ -953,6 +1025,30 @@
         </div>
     </div>
     <div class="container">
+        <button class="floating-info-btn" onclick="toggleQuickInfo()" title="Quick Location Info">ℹ️</button>
+        <div class="quick-info-panel" id="quickInfoPanel">
+            <h3 style="color: #8b6f47; margin-bottom: 15px;">📍 Quick Info</h3>
+            <div class="quick-info-item" onclick="showEnhancedLocationInfo('prometheus-cave')">
+                <div class="quick-info-title">🔦 Prometheus Cave</div>
+                <div class="quick-info-desc">Underground wonderland with boat rides</div>
+            </div>
+            <div class="quick-info-item" onclick="showEnhancedLocationInfo('bagrati-cathedral')">
+                <div class="quick-info-title">⛪ Bagrati Cathedral</div>
+                <div class="quick-info-desc">UNESCO World Heritage with panoramic views</div>
+            </div>
+            <div class="quick-info-item" onclick="showEnhancedLocationInfo('narikala-fortress')">
+                <div class="quick-info-title">🏰 Narikala Fortress</div>
+                <div class="quick-info-desc">Ancient fortress overlooking Tbilisi</div>
+            </div>
+            <div class="quick-info-item" onclick="showEnhancedLocationInfo('batumi-dolphinarium')">
+                <div class="quick-info-title">🐬 Batumi Dolphinarium</div>
+                <div class="quick-info-desc">Marine shows and educational programs</div>
+            </div>
+            <div class="quick-info-item" onclick="showEnhancedLocationInfo('makhuntseti-waterfall')">
+                <div class="quick-info-title">💦 Makhuntseti Waterfall</div>
+                <div class="quick-info-desc">20-meter cascade in pristine nature</div>
+            </div>
+        </div>
         <header>
             <h1>🇬🇪 Georgia Family Adventure</h1>
             <p class="subtitle">8 Days Through Kutaisi, Tbilisi & Batumi</p>
@@ -2108,6 +2204,255 @@
         setTimeout(() => {
             showNotification('👋 Welcome to your Georgia adventure! Click on locations to explore.');
         }, 2000);
+        
+        // Toggle quick info panel
+        function toggleQuickInfo() {
+            const panel = document.getElementById('quickInfoPanel');
+            panel.classList.toggle('show');
+        }
+        
+        // Enhanced location info with beautiful popups
+        function showEnhancedLocationInfo(locationId) {
+            const locations = {
+                'prometheus-cave': {
+                    name: 'Prometheus Cave',
+                    subtitle: 'Underground Natural Wonder',
+                    coordinates: '42.3733°N, 42.6014°E',
+                    rating: 4.7,
+                    description: 'One of Georgia\'s most spectacular natural wonders, featuring a 1.4km underground walkway through 6 magnificent halls adorned with stunning stalactites, stalagmites, and underground rivers. The cave maintains a perfect temperature of 14°C year-round.',
+                    highlights: [
+                        { icon: '🔦', title: '6 Underground Halls', desc: 'Each with unique formations' },
+                        { icon: '🌈', title: 'Colorful LED Lighting', desc: 'Enhances natural beauty' },
+                        { icon: '🚣', title: 'Underground Boat Ride', desc: 'Optional river journey' },
+                        { icon: '🌡️', title: 'Perfect Temperature', desc: 'Comfortable 14°C year-round' }
+                    ],
+                    stats: [
+                        { value: '1.4km', label: 'Walking Distance' },
+                        { value: '14°C', label: 'Temperature' },
+                        { value: '6', label: 'Halls' },
+                        { value: '1hr', label: 'Duration' }
+                    ],
+                    tips: 'Wear comfortable walking shoes and bring a light jacket. The cave maintains 14°C temperature year-round, making it a perfect escape from summer heat.',
+                    price: '15 GEL adults, 5 GEL children',
+                    images: ['Cave formations', 'Underground river', 'LED lighting', 'Boat ride']
+                },
+                'narikala-fortress': {
+                    name: 'Narikala Fortress',
+                    subtitle: 'Ancient Citadel of Tbilisi',
+                    coordinates: '41.6892°N, 44.8089°E',
+                    rating: 4.5,
+                    description: 'Ancient fortress dating back to the 4th century, perched on a hill overlooking Tbilisi. Known as the "soul and heart" of the city, it offers breathtaking panoramic views and houses the St. Nicholas Church.',
+                    highlights: [
+                        { icon: '🏰', title: 'Ancient Fortress', desc: 'Dating back to 4th century' },
+                        { icon: '🎆', title: 'Panoramic Views', desc: 'Spectacular city vistas' },
+                        { icon: '🌁', title: 'Cable Car Access', desc: 'Scenic ride to the top' },
+                        { icon: '⛪', title: 'St. Nicholas Church', desc: 'Historic chapel inside' }
+                    ],
+                    stats: [
+                        { value: '1,600', label: 'Years Old' },
+                        { value: '360°', label: 'City Views' },
+                        { value: '5min', label: 'Cable Car' },
+                        { value: 'Free', label: 'Entry' }
+                    ],
+                    tips: 'Best visited during sunset for golden hour photography. The cable car ride is an experience itself. Wear comfortable shoes for walking on uneven surfaces.',
+                    price: 'Free entry, Cable car: 2.5 GEL',
+                    images: ['Fortress walls', 'City panorama', 'Cable car', 'Mother Georgia statue']
+                },
+                'bagrati-cathedral': {
+                    name: 'Bagrati Cathedral',
+                    subtitle: 'UNESCO World Heritage Masterpiece',
+                    coordinates: '42.2778°N, 42.7011°E',
+                    rating: 4.6,
+                    description: 'Magnificent 11th-century cathedral and UNESCO World Heritage site, representing the pinnacle of medieval Georgian architecture. Offers stunning panoramic views over Kutaisi and the Rioni River valley.',
+                    highlights: [
+                        { icon: '🏛️', title: 'UNESCO Heritage', desc: 'World Heritage status' },
+                        { icon: '🌅', title: 'Sunrise Views', desc: 'Spectacular morning light' },
+                        { icon: '🏗️', title: 'Medieval Architecture', desc: '11th-century design' },
+                        { icon: '📷', title: 'Photography Paradise', desc: 'Endless photo opportunities' }
+                    ],
+                    stats: [
+                        { value: '1,000', label: 'Years Old' },
+                        { value: 'UNESCO', label: 'Heritage Site' },
+                        { value: '45min', label: 'Visit Time' },
+                        { value: 'Free', label: 'Entry' }
+                    ],
+                    tips: 'Visit in late afternoon for the best lighting. The cathedral offers one of the most beautiful sunset views in Georgia. Dress respectfully as it\'s an active religious site.',
+                    price: 'Free entry',
+                    images: ['Cathedral exterior', 'Interior frescoes', 'City views', 'Sunset panorama']
+                },
+                'batumi-dolphinarium': {
+                    name: 'Batumi Dolphinarium',
+                    subtitle: 'Marine Entertainment & Education',
+                    coordinates: '41.6406°N, 41.6394°E',
+                    rating: 4.3,
+                    description: 'Modern dolphinarium featuring entertaining and educational shows with Black Sea dolphins, sea lions, and fur seals. Perfect family attraction with air-conditioned comfort.',
+                    highlights: [
+                        { icon: '🐬', title: 'Dolphin Shows', desc: '30-minute performances' },
+                        { icon: '🦭', title: 'Sea Lions', desc: 'Playful performances' },
+                        { icon: '📸', title: 'Photo Opportunities', desc: 'Meet the marine stars' },
+                        { icon: '❄️', title: 'Air Conditioned', desc: 'Comfortable viewing' }
+                    ],
+                    stats: [
+                        { value: '30min', label: 'Show Duration' },
+                        { value: '5', label: 'Daily Shows' },
+                        { value: '4.3', label: 'Rating' },
+                        { value: '25°C', label: 'Indoor Temp' }
+                    ],
+                    tips: 'Shows run several times daily - arrive 15 minutes early for the best seats. Perfect for hot summer days with air conditioning. Great for kids of all ages!',
+                    price: '25 GEL adults, 15 GEL children',
+                    images: ['Dolphin performance', 'Sea lion show', 'Audience interaction', 'Marine education']
+                },
+                'makhuntseti-waterfall': {
+                    name: 'Makhuntseti Waterfall',
+                    subtitle: 'Adjara\'s Natural Masterpiece',
+                    coordinates: '41.6086°N, 41.7031°E',
+                    rating: 4.8,
+                    description: 'Spectacular 20-meter waterfall cascading down moss-covered rocks in pristine subtropical forest. The highest waterfall in Adjara region, offering refreshing mist and natural swimming opportunities.',
+                    highlights: [
+                        { icon: '💦', title: '20-Meter Cascade', desc: 'Highest in Adjara region' },
+                        { icon: '🌿', title: 'Subtropical Forest', desc: 'Lush green surroundings' },
+                        { icon: '🏊', title: 'Natural Pool', desc: 'Swimming opportunity' },
+                        { icon: '📷', title: 'Photography Paradise', desc: 'Stunning natural beauty' }
+                    ],
+                    stats: [
+                        { value: '20m', label: 'Height' },
+                        { value: '15°C', label: 'Water Temp' },
+                        { value: '1.5hr', label: 'Visit Time' },
+                        { value: 'Free', label: 'Access' }
+                    ],
+                    tips: 'Wear non-slip shoes as rocks can be slippery. Swimming is possible but water is quite cold. Best visited in summer for the full experience. Combine with Queen Tamara\'s Bridge visit.',
+                    price: 'Free access',
+                    images: ['Waterfall cascade', 'Natural pool', 'Forest path', 'Moss-covered rocks']
+                }
+            };
+            
+            const location = locations[locationId];
+            if (!location) return;
+            
+            // Create enhanced modal
+            const modal = document.createElement('div');
+            modal.className = 'place-modal';
+            modal.innerHTML = `
+                <div class="place-modal-content">
+                    <div class="place-modal-header">
+                        <button class="place-modal-close" onclick="closePlaceModal()">&times;</button>
+                        <h1 class="place-modal-title">${location.name}</h1>
+                        <p class="place-modal-subtitle">${location.subtitle}</p>
+                        <div class="rating-stars">
+                            ${'⭐'.repeat(Math.floor(location.rating))}
+                            <span style="margin-left: 10px; color: rgba(255,255,255,0.9);">${location.rating}/5</span>
+                        </div>
+                    </div>
+                    <div class="place-modal-body">
+                        <div class="place-description">
+                            <h3>📜 About This Place</h3>
+                            <p>${location.description}</p>
+                        </div>
+                        
+                        <div class="place-stats">
+                            ${location.stats.map(stat => `
+                                <div class="place-stat">
+                                    <div class="place-stat-value">${stat.value}</div>
+                                    <div class="place-stat-label">${stat.label}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="place-info-grid">
+                            ${location.highlights.map(highlight => `
+                                <div class="place-info-card">
+                                    <div class="place-info-title">
+                                        <span>${highlight.icon}</span>
+                                        ${highlight.title}
+                                    </div>
+                                    <div class="place-info-content">${highlight.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="place-gallery">
+                            ${location.images.map(image => `
+                                <div class="place-gallery-item">
+                                    <span>${image}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="place-tips">
+                            <h3>💡 Pro Tips</h3>
+                            <p>${location.tips}</p>
+                        </div>
+                        
+                        <div class="place-actions">
+                            <button class="place-action-btn" onclick="openLocation('${location.coordinates}', '${location.name}')">
+                                🗺️ View on Maps
+                            </button>
+                            <button class="place-action-btn" onclick="shareLocation('${location.name}')">
+                                📱 Share Location
+                            </button>
+                            <button class="place-action-btn" onclick="addToFavorites('${locationId}')">
+                                ❤️ Add to Favorites
+                            </button>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(212, 165, 116, 0.1); border-radius: 10px;">
+                            <strong>💰 Price: ${location.price}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Show modal with animation
+            setTimeout(() => {
+                modal.style.display = 'block';
+            }, 10);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closePlaceModal();
+                }
+            });
+        }
+        
+        // Close place modal
+        function closePlaceModal() {
+            const modal = document.querySelector('.place-modal');
+            if (modal) {
+                modal.style.display = 'none';
+                setTimeout(() => {
+                    document.body.removeChild(modal);
+                }, 300);
+            }
+        }
+        
+        // Share location
+        function shareLocation(locationName) {
+            if (navigator.share) {
+                navigator.share({
+                    title: `Visit ${locationName}`,
+                    text: `Check out this amazing place: ${locationName}`,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showNotification(`🔗 ${locationName} link copied to clipboard!`);
+            }
+        }
+        
+        // Add to favorites (localStorage)
+        function addToFavorites(locationId) {
+            let favorites = JSON.parse(localStorage.getItem('georgiaFavorites') || '[]');
+            if (!favorites.includes(locationId)) {
+                favorites.push(locationId);
+                localStorage.setItem('georgiaFavorites', JSON.stringify(favorites));
+                showNotification('❤️ Added to favorites!');
+            } else {
+                showNotification('💫 Already in favorites!');
+            }
+        }
         
         // Show route information
         function showRouteInfo(route) {
