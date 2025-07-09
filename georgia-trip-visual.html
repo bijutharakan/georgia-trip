@@ -13,27 +13,32 @@
         
         body {
             font-family: 'Georgia', serif;
-            background: #fdf6f0;
+            background: linear-gradient(135deg, #fdf6f0 0%, #f5efe7 100%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
         
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
             color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(139, 111, 71, 0.3);
-            margin-bottom: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(139, 111, 71, 0.4);
+            margin-bottom: 50px;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         header::before {
@@ -54,42 +59,50 @@
         }
         
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
             position: relative;
             z-index: 1;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         
         .subtitle {
-            font-size: 1.5em;
-            opacity: 0.9;
+            font-size: 1.6em;
+            opacity: 0.95;
             position: relative;
             z-index: 1;
+            font-weight: 300;
+            margin-bottom: 8px;
         }
         
         .trip-overview {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-bottom: 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .overview-item {
             text-align: center;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 165, 116, 0.2);
         }
         
         .overview-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         }
         
         .overview-item h3 {
@@ -98,12 +111,14 @@
         }
         
         .route-map {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-bottom: 50px;
             text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .route-visual {
@@ -117,12 +132,14 @@
         .city-marker {
             background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
             border-radius: 50px;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(139, 111, 71, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 111, 71, 0.4);
             position: relative;
-            margin: 10px;
+            margin: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .route-line {
@@ -174,10 +191,11 @@
         .day-header {
             background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
             color: white;
-            padding: 20px 30px;
-            border-radius: 15px 15px 0 0;
+            padding: 30px 40px;
+            border-radius: 20px 20px 0 0;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
         }
         
         .day-header h2 {
@@ -191,10 +209,13 @@
         }
         
         .day-content {
-            background: white;
-            padding: 30px;
-            border-radius: 0 0 15px 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none;
         }
         
         .timeline {
@@ -239,16 +260,18 @@
         }
         
         .activity {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
+            border: 1px solid rgba(212, 165, 116, 0.1);
         }
         
         .activity:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            transform: translateX(8px) scale(1.01);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .activity h3 {
@@ -271,16 +294,18 @@
         .highlight-card {
             background: linear-gradient(135deg, #e9c893 0%, #d4a574 100%);
             color: white;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 25px;
+            border-radius: 18px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
         }
         
         .highlight-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #eecfa0 0%, #d8aa7b 100%);
         }
         
         .highlight-card h4 {
@@ -323,11 +348,12 @@
         }
         
         .driving-info {
-            background: #e7f3ff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border-left: 4px solid #0066cc;
+            background: linear-gradient(135deg, #e7f3ff 0%, #e1effd 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 6px solid #0066cc;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
         }
         
         .driving-info strong {
@@ -335,11 +361,12 @@
         }
         
         .accommodation {
-            background: #fff4e6;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border-left: 4px solid #ff9800;
+            background: linear-gradient(135deg, #fff4e6 0%, #fef3e4 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 6px solid #ff9800;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
         }
         
         .accommodation h4 {
@@ -349,19 +376,31 @@
         
         .hotel-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-top: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hotel-image:hover {
+            transform: scale(1.03);
         }
         
         .map-image {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             height: auto;
-            border-radius: 10px;
-            margin: 20px auto;
+            border-radius: 15px;
+            margin: 25px auto;
             display: block;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .map-image:hover {
+            transform: scale(1.02);
         }
         
         .photo-gallery {
@@ -373,36 +412,62 @@
         
         .photo-placeholder {
             background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
-            height: 150px;
-            border-radius: 10px;
+            height: 180px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 6px 20px rgba(139, 111, 71, 0.3);
         }
         
         .photo-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-placeholder:hover img {
+            transform: scale(1.1);
         }
         
         .photo-placeholder:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0;
             color: #6c757d;
             font-style: italic;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            margin-top: 50px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .city-marker:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 111, 71, 0.5);
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d4a574 0%, #8b6f47 100%);
+            transform-origin: 0%;
+            z-index: 1000;
         }
         
         @media (max-width: 768px) {
@@ -417,16 +482,34 @@
             }
             
             h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
             
             .subtitle {
-                font-size: 1.2em;
+                font-size: 1.3em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .trip-overview {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            
+            .day-content {
+                padding: 25px;
+            }
+            
+            .day-header {
+                padding: 20px 25px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
     <div class="container">
         <header>
             <h1>🇬🇪 Georgia Family Adventure</h1>
@@ -549,21 +632,21 @@
                 <div class="accommodation">
                     <h4>🏨 Accommodation: Hotel Terrace Kutaisi</h4>
                     <p>Family-friendly hotel in city center with spacious rooms and parking</p>
-                    <img class="hotel-image" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=60" alt="Hotel in Kutaisi">
+                    <img class="hotel-image" src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hotel in Kutaisi">
                 </div>
                 
                 <div class="photo-gallery">
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&auto=format&fit=crop&q=60" alt="Cave Interior">
+                        <img src="https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Cave Interior">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=400&auto=format&fit=crop&q=60" alt="Bagrati Cathedral">
+                        <img src="https://images.pexels.com/photos/1002703/pexels-photo-1002703.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bagrati Cathedral">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=400&auto=format&fit=crop&q=60" alt="Georgian Food">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Food">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400&auto=format&fit=crop&q=60" alt="Monastery View">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Monastery View">
                     </div>
                 </div>
             </div>
@@ -632,16 +715,16 @@
                 
                 <div class="photo-gallery" style="margin-top: 20px;">
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1590333748338-d629e4564ad9?w=400&auto=format&fit=crop&q=60" alt="Uplistsikhe Cave City">
+                        <img src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Uplistsikhe Cave City">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1548625149-720134d51a3a?w=400&auto=format&fit=crop&q=60" alt="Mtskheta Cathedral">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mtskheta Cathedral">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=400&auto=format&fit=crop&q=60" alt="Tbilisi Old Town">
+                        <img src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Tbilisi Old Town">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&auto=format&fit=crop&q=60" alt="Georgian Wine">
+                        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Wine">
                     </div>
                 </div>
             </div>
@@ -702,21 +785,21 @@
                 <div class="accommodation">
                     <h4>🏨 Accommodation Options in Tbilisi</h4>
                     <p>Stay in Old Town area - walking distance to attractions. Options: Rooms Hotel Tbilisi or central Airbnb apartment</p>
-                    <img class="hotel-image" src="https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=800&auto=format&fit=crop&q=60" alt="Tbilisi Hotel View">
+                    <img class="hotel-image" src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tbilisi Hotel View">
                 </div>
                 
                 <div class="photo-gallery">
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400&auto=format&fit=crop&q=60" alt="Holy Trinity Cathedral">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Holy Trinity Cathedral">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=400&auto=format&fit=crop&q=60" alt="Bridge of Peace">
+                        <img src="https://images.pexels.com/photos/3293148/pexels-photo-3293148.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bridge of Peace">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=400&auto=format&fit=crop&q=60" alt="Mtatsminda Park">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mtatsminda Park">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400&auto=format&fit=crop&q=60" alt="Georgian Dance">
+                        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Dance">
                     </div>
                 </div>
             </div>
@@ -861,7 +944,7 @@
                 <div class="accommodation">
                     <h4>🏨 Accommodation: Batumi Waterfront</h4>
                     <p>Modern apartment or hotel near Boulevard - Options: Radisson Blu Batumi or seafront Airbnb</p>
-                    <img class="hotel-image" src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&auto=format&fit=crop&q=60" alt="Batumi Hotel">
+                    <img class="hotel-image" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batumi Hotel">
                 </div>
             </div>
         </div>
@@ -927,16 +1010,16 @@
                 
                 <div class="photo-gallery">
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=400&auto=format&fit=crop&q=60" alt="Batumi Boulevard">
+                        <img src="https://images.pexels.com/photos/1007025/pexels-photo-1007025.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Batumi Boulevard">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&auto=format&fit=crop&q=60" alt="Dolphin Show">
+                        <img src="https://images.pexels.com/photos/64219/dolphin-marine-mammals-water-sea-64219.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dolphin Show">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&auto=format&fit=crop&q=60" alt="Beach Scene">
+                        <img src="https://images.pexels.com/photos/1007025/pexels-photo-1007025.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Beach Scene">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&auto=format&fit=crop&q=60" alt="Cable Car View">
+                        <img src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Cable Car View">
                     </div>
                 </div>
             </div>
@@ -1003,16 +1086,16 @@
                 
                 <div class="photo-gallery">
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1559070135-f259b369bf87?w=400&auto=format&fit=crop&q=60" alt="Waterfall">
+                        <img src="https://images.pexels.com/photos/1666021/pexels-photo-1666021.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Waterfall">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fit=crop&q=60" alt="Stone Bridge">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Stone Bridge">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?w=400&auto=format&fit=crop&q=60" alt="Vineyard">
+                        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Vineyard">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1565299715199-866c917206bb?w=400&auto=format&fit=crop&q=60" alt="Folk Dancing">
+                        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Folk Dancing">
                     </div>
                 </div>
             </div>
@@ -1073,21 +1156,21 @@
                 <div class="accommodation">
                     <h4>🏨 Final Night: Best Western Kutaisi</h4>
                     <p>Airport hotel recommended for easy morning departure - 10 minutes to airport</p>
-                    <img class="hotel-image" src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800&auto=format&fit=crop&q=60" alt="Airport Hotel">
+                    <img class="hotel-image" src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Airport Hotel">
                 </div>
                 
                 <div class="photo-gallery">
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1553531889-3836a7ee6d3f?w=400&auto=format&fit=crop&q=60" alt="Martvili Canyon">
+                        <img src="https://images.pexels.com/photos/1666021/pexels-photo-1666021.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Martvili Canyon">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&auto=format&fit=crop&q=60" alt="Georgian Restaurant">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Restaurant">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&auto=format&fit=crop&q=60" alt="Market Spices">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Market Spices">
                     </div>
                     <div class="photo-placeholder">
-                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&auto=format&fit=crop&q=60" alt="Georgian Wine">
+                        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Wine">
                     </div>
                 </div>
             </div>
@@ -1136,10 +1219,10 @@
                     
                     <div class="photo-gallery" style="margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
                         <div class="photo-placeholder" style="height: 200px;">
-                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&auto=format&fit=crop&q=60" alt="Georgian Landscape">
+                            <img src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Landscape">
                         </div>
                         <div class="photo-placeholder" style="height: 200px;">
-                            <img src="https://images.unsplash.com/photo-1476304884326-cd2c88572c5f?w=400&auto=format&fit=crop&q=60" alt="Family Travel">
+                            <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Family Travel">
                         </div>
                     </div>
                 </div>
@@ -1151,5 +1234,80 @@
             <p>Created with ❤️ for your Georgian family adventure</p>
         </footer>
     </div>
+    
+    <script>
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollIndicator').style.transform = `scaleX(${scrolled}%)`;
+        });
+        
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all day containers
+        document.querySelectorAll('.day-container').forEach(container => {
+            observer.observe(container);
+        });
+        
+        // Add hover effects to images
+        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
+            placeholder.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.08) translateY(-5px)';
+            });
+            
+            placeholder.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Add click handlers for highlight cards
+        document.querySelectorAll('.highlight-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.08) translateY(-5px)';
+                }, 150);
+            });
+        });
+        
+        // Parallax effect for header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+        });
+    </script>
 </body>
 </html>

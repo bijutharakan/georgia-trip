@@ -4,7 +4,9 @@
       "Bash(chmod:*)",
       "Bash(/Users/moonwalker/Projects/personal-projects/georgia-trip/check_images.sh:*)",
       "Bash(grep:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }
