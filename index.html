@@ -140,6 +140,7 @@
             margin: 15px;
             transition: all 0.3s ease;
             cursor: pointer;
+            user-select: none;
         }
         
         .route-line {
@@ -148,6 +149,14 @@
             flex: 1;
             margin: 0 10px;
             position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .route-line:hover {
+            height: 5px;
+            background: linear-gradient(90deg, #8b6f47 0%, #d4a574 100%);
+            box-shadow: 0 2px 10px rgba(139, 111, 71, 0.5);
         }
         
         .route-line::after {
@@ -978,17 +987,18 @@
         </div>
         
         <div class="route-map">
-            <h2>Journey Route</h2>
+            <h2>Interactive Journey Route</h2>
             <div class="route-visual">
-                <div class="city-marker">✈️ Kutaisi</div>
-                <div class="route-line"></div>
-                <div class="city-marker">🏛️ Tbilisi</div>
-                <div class="route-line"></div>
-                <div class="city-marker">🏖️ Batumi</div>
-                <div class="route-line"></div>
-                <div class="city-marker">✈️ Kutaisi</div>
+                <div class="city-marker" onclick="openLocation('42.2679,42.6946', 'Kutaisi Airport')" title="Click to view Kutaisi on map">✈️ Kutaisi</div>
+                <div class="route-line" onclick="showRouteInfo('kutaisi-tbilisi')" title="Click for route details"></div>
+                <div class="city-marker" onclick="openLocation('41.7151,44.8271', 'Tbilisi')" title="Click to view Tbilisi on map">🏛️ Tbilisi</div>
+                <div class="route-line" onclick="showRouteInfo('tbilisi-batumi')" title="Click for route details"></div>
+                <div class="city-marker" onclick="openLocation('41.6168,41.6367', 'Batumi')" title="Click to view Batumi on map">🏖️ Batumi</div>
+                <div class="route-line" onclick="showRouteInfo('batumi-kutaisi')" title="Click for route details"></div>
+                <div class="city-marker" onclick="openLocation('42.2679,42.6946', 'Kutaisi Airport')" title="Click to view Kutaisi on map">✈️ Kutaisi</div>
             </div>
             <p style="margin-top: 20px; color: #6c757d;">Total Distance: ~1,000+ km | Self-drive adventure through Georgia's diverse landscapes</p>
+            <p style="margin-top: 10px; color: #d4a574; font-weight: bold;">💡 Click on cities or route lines for detailed information!</p>
         </div>
         
         <!-- Day 1 -->
@@ -1021,8 +1031,9 @@
                                 </div>
                                 <div class="location-description">Spectacular underground cave system with colorful lighting and boat tours</div>
                                 <div class="location-actions">
-                                    <a href="https://www.google.com/maps/place/Prometheus+Cave/@42.3733,42.6014,15z" target="_blank" class="location-btn">🗺️ View on Maps</a>
+                                    <button onclick="openLocation('42.3733,42.6014', 'Prometheus Cave')" class="location-btn">🗺️ View on Maps</button>
                                     <a href="https://www.google.com/search?q=Prometheus+Cave+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('prometheus-cave')" class="location-btn">ℹ️ Info</button>
                                 </div>
                             </div>
                         </div>
@@ -1042,8 +1053,9 @@
                                 </div>
                                 <div class="location-description">Unique nature reserve with dinosaur footprints and glass walkway over forest canopy</div>
                                 <div class="location-actions">
-                                    <a href="https://www.google.com/maps/place/Sataplia+Nature+Reserve/@42.3342,42.5833,15z" target="_blank" class="location-btn">🗺️ View on Maps</a>
+                                    <button onclick="openLocation('42.3342,42.5833', 'Sataplia Nature Reserve')" class="location-btn">🗺️ View on Maps</button>
                                     <a href="https://www.google.com/search?q=Sataplia+Nature+Reserve+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('sataplia-reserve')" class="location-btn">ℹ️ Info</button>
                                 </div>
                             </div>
                         </div>
@@ -1063,8 +1075,9 @@
                                 </div>
                                 <div class="location-description">UNESCO World Heritage 11th-century cathedral with stunning city views</div>
                                 <div class="location-actions">
-                                    <a href="https://www.google.com/maps/place/Bagrati+Cathedral/@42.2778,42.7011,15z" target="_blank" class="location-btn">🗺️ View on Maps</a>
+                                    <button onclick="openLocation('42.2778,42.7011', 'Bagrati Cathedral')" class="location-btn">🗺️ View on Maps</button>
                                     <a href="https://www.google.com/search?q=Bagrati+Cathedral+Kutaisi+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('bagrati-cathedral')" class="location-btn">ℹ️ Info</button>
                                 </div>
                             </div>
                         </div>
@@ -1084,8 +1097,9 @@
                                 </div>
                                 <div class="location-description">Medieval monastery complex with exceptional frescoes and historical significance</div>
                                 <div class="location-actions">
-                                    <a href="https://www.google.com/maps/place/Gelati+Monastery/@42.2956,42.7706,15z" target="_blank" class="location-btn">🗺️ View on Maps</a>
+                                    <button onclick="openLocation('42.2956,42.7706', 'Gelati Monastery')" class="location-btn">🗺️ View on Maps</button>
                                     <a href="https://www.google.com/search?q=Gelati+Monastery+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('gelati-monastery')" class="location-btn">ℹ️ Info</button>
                                 </div>
                             </div>
                         </div>
@@ -1171,8 +1185,9 @@
                                 </div>
                                 <div class="location-description">Ancient rock-hewn city dating back to 1st millennium BC</div>
                                 <div class="location-actions">
-                                    <a href="https://www.google.com/maps/place/Uplistsikhe+Cave+Town/@41.9667,44.2167,15z" target="_blank" class="location-btn">🗺️ View on Maps</a>
+                                    <button onclick="openLocation('41.9667,44.2167', 'Uplistsikhe Cave Town')" class="location-btn">🗺️ View on Maps</button>
                                     <a href="https://www.google.com/search?q=Uplistsikhe+Cave+Town+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('uplistsikhe-cave')" class="location-btn">ℹ️ Info</button>
                                 </div>
                             </div>
                         </div>
@@ -1192,8 +1207,9 @@
                                 </div>
                                 <div class="location-description">UNESCO World Heritage cathedral, considered the holiest place in Georgia</div>
                                 <div class="location-actions">
-                                    <a href="https://www.google.com/maps/place/Svetitskhoveli+Cathedral/@41.8431,44.7208,15z" target="_blank" class="location-btn">🗺️ View on Maps</a>
+                                    <button onclick="openLocation('41.8431,44.7208', 'Svetitskhoveli Cathedral')" class="location-btn">🗺️ View on Maps</button>
                                     <a href="https://www.google.com/search?q=Svetitskhoveli+Cathedral+Mtskheta+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('svetitskhoveli-cathedral')" class="location-btn">ℹ️ Info</button>
                                 </div>
                             </div>
                         </div>
@@ -1479,6 +1495,21 @@
                         <div class="activity">
                             <h3>🌳 6 May Park</h3>
                             <p>Lake with pedal boats and playground</p>
+                            <div class="location-card" onclick="openLocation('41.6451,41.6360', '6 May Park')">
+                                <div class="location-header">
+                                    <div class="location-icon">🌳</div>
+                                    <div class="location-info">
+                                        <h4 class="location-name">6 May Park</h4>
+                                        <div class="location-coordinates">📍 41.6451°N, 41.6360°E</div>
+                                    </div>
+                                </div>
+                                <div class="location-description">Beautiful city park with lake, pedal boats, and family-friendly activities</div>
+                                <div class="location-actions">
+                                    <button onclick="openLocation('41.6451,41.6360', '6 May Park')" class="location-btn">🗺️ View on Maps</button>
+                                    <a href="https://www.google.com/search?q=6+May+Park+Batumi+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('may-park')" class="location-btn">ℹ️ Info</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1486,6 +1517,21 @@
                         <div class="activity">
                             <h3>🐬 Batumi Dolphinarium</h3>
                             <p>30-minute dolphin show - kids' favorite!</p>
+                            <div class="location-card" onclick="openLocation('41.6406,41.6394', 'Batumi Dolphinarium')">
+                                <div class="location-header">
+                                    <div class="location-icon">🐬</div>
+                                    <div class="location-info">
+                                        <h4 class="location-name">Batumi Dolphinarium</h4>
+                                        <div class="location-coordinates">📍 41.6406°N, 41.6394°E</div>
+                                    </div>
+                                </div>
+                                <div class="location-description">Modern dolphinarium with entertaining shows and educational programs</div>
+                                <div class="location-actions">
+                                    <button onclick="openLocation('41.6406,41.6394', 'Batumi Dolphinarium')" class="location-btn">🗺️ View on Maps</button>
+                                    <a href="https://www.google.com/search?q=Batumi+Dolphinarium+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('batumi-dolphinarium')" class="location-btn">ℹ️ Info</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1562,6 +1608,21 @@
                         <div class="activity">
                             <h3>💦 Makhuntseti Waterfall</h3>
                             <p>Highest waterfall in Adjara with refreshing mist</p>
+                            <div class="location-card" onclick="openLocation('41.6086,41.7031', 'Makhuntseti Waterfall')">
+                                <div class="location-header">
+                                    <div class="location-icon">💦</div>
+                                    <div class="location-info">
+                                        <h4 class="location-name">Makhuntseti Waterfall</h4>
+                                        <div class="location-coordinates">📍 41.6086°N, 41.7031°E</div>
+                                    </div>
+                                </div>
+                                <div class="location-description">Spectacular 20-meter waterfall in pristine mountain setting</div>
+                                <div class="location-actions">
+                                    <button onclick="openLocation('41.6086,41.7031', 'Makhuntseti Waterfall')" class="location-btn">🗺️ View on Maps</button>
+                                    <a href="https://www.google.com/search?q=Makhuntseti+Waterfall+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('makhuntseti-waterfall')" class="location-btn">ℹ️ Info</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1569,6 +1630,21 @@
                         <div class="activity">
                             <h3>🌉 Queen Tamara's Bridge</h3>
                             <p>12th-century stone arch bridge - perfect photos!</p>
+                            <div class="location-card" onclick="openLocation('41.6083,41.7033', 'Queen Tamara Bridge')">
+                                <div class="location-header">
+                                    <div class="location-icon">🌉</div>
+                                    <div class="location-info">
+                                        <h4 class="location-name">Queen Tamara's Bridge</h4>
+                                        <div class="location-coordinates">📍 41.6083°N, 41.7033°E</div>
+                                    </div>
+                                </div>
+                                <div class="location-description">Historic 12th-century stone arch bridge with legendary connections</div>
+                                <div class="location-actions">
+                                    <button onclick="openLocation('41.6083,41.7033', 'Queen Tamara Bridge')" class="location-btn">🗺️ View on Maps</button>
+                                    <a href="https://www.google.com/search?q=Queen+Tamara+Bridge+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
+                                    <button onclick="showLocationInfo('queen-tamara-bridge')" class="location-btn">ℹ️ Info</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -1826,8 +1902,8 @@
             document.body.style.transition = 'opacity 0.5s ease-in-out';
         });
         
-        // Function to open location in Google Maps
-        function openLocation(url, name) {
+        // Function to open location in Google Maps (Mobile-Optimized)
+        function openLocation(coords, name) {
             // Add click animation
             event.currentTarget.style.transform = 'scale(0.98)';
             setTimeout(() => {
@@ -1837,8 +1913,35 @@
             // Show notification
             showNotification(`📍 Opening ${name} in Google Maps!`);
             
-            // Open in new window
-            window.open(url, '_blank');
+            // Mobile-optimized Google Maps URLs
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            let url;
+            if (isMobile) {
+                // Use Google Maps mobile app URL scheme
+                url = `https://maps.google.com/maps?q=${coords}&t=m`;
+                
+                // Try to open in Google Maps app first
+                const mapsAppUrl = `comgooglemaps://?q=${coords}&center=${coords}&zoom=14`;
+                
+                // Create a temporary link to test app availability
+                const tempLink = document.createElement('a');
+                tempLink.href = mapsAppUrl;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                
+                // Try to open in app, fallback to web
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                    document.body.removeChild(tempLink);
+                }, 100);
+                
+                tempLink.click();
+            } else {
+                // Desktop - open in new tab
+                url = `https://www.google.com/maps/place/${coords}/@${coords},15z`;
+                window.open(url, '_blank');
+            }
         }
         
         // Show notification
@@ -2005,6 +2108,202 @@
         setTimeout(() => {
             showNotification('👋 Welcome to your Georgia adventure! Click on locations to explore.');
         }, 2000);
+        
+        // Show route information
+        function showRouteInfo(route) {
+            const routeData = {
+                'kutaisi-tbilisi': {
+                    title: 'Kutaisi to Tbilisi',
+                    distance: '250 km',
+                    duration: '3.5-4 hours',
+                    highlights: ['Uplistsikhe Cave Town', 'Mtskheta UNESCO Site', 'Scenic mountain views'],
+                    tips: 'Stop at Uplistsikhe for ancient cave exploration, then visit Mtskheta for lunch and cathedral tour.'
+                },
+                'tbilisi-batumi': {
+                    title: 'Tbilisi to Batumi',
+                    distance: '360 km',
+                    duration: '5.5-6 hours',
+                    highlights: ['Khashuri rest stop', 'Ureki magnetic beach', 'Coastal views'],
+                    tips: 'Early morning departure recommended. Take breaks every 2 hours and enjoy the landscape change from mountains to coast.'
+                },
+                'batumi-kutaisi': {
+                    title: 'Batumi to Kutaisi',
+                    distance: '150 km',
+                    duration: '2.5 hours',
+                    highlights: ['Martvili Canyon', 'Samtredia junction', 'Imereti region'],
+                    tips: 'Perfect for a morning departure with optional stop at Martvili Canyon for boat rides.'
+                }
+            };
+            
+            const info = routeData[route];
+            if (info) {
+                const content = `
+                    <div style="background: linear-gradient(135deg, #e7f3ff 0%, #d1ecf1 100%); padding: 20px; border-radius: 15px; margin: 15px 0;">
+                        <h3 style="color: #0066cc; margin-bottom: 15px;">🚗 ${info.title}</h3>
+                        <p><strong>Distance:</strong> ${info.distance}</p>
+                        <p><strong>Duration:</strong> ${info.duration}</p>
+                        <p><strong>Highlights:</strong> ${info.highlights.join(', ')}</p>
+                        <p><strong>Pro Tip:</strong> ${info.tips}</p>
+                    </div>
+                `;
+                
+                // Create and show route info popup
+                const popup = document.createElement('div');
+                popup.innerHTML = content;
+                popup.style.position = 'fixed';
+                popup.style.top = '50%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)';
+                popup.style.zIndex = '1000';
+                popup.style.maxWidth = '90vw';
+                popup.style.maxHeight = '80vh';
+                popup.style.overflow = 'auto';
+                popup.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+                popup.style.borderRadius = '15px';
+                
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '×';
+                closeBtn.style.position = 'absolute';
+                closeBtn.style.top = '10px';
+                closeBtn.style.right = '15px';
+                closeBtn.style.background = 'none';
+                closeBtn.style.border = 'none';
+                closeBtn.style.fontSize = '24px';
+                closeBtn.style.cursor = 'pointer';
+                closeBtn.style.color = '#666';
+                closeBtn.onclick = () => document.body.removeChild(popup);
+                
+                popup.appendChild(closeBtn);
+                document.body.appendChild(popup);
+                
+                // Auto-remove after 8 seconds
+                setTimeout(() => {
+                    if (document.body.contains(popup)) {
+                        document.body.removeChild(popup);
+                    }
+                }, 8000);
+            }
+        }
+        
+        // Show detailed location information
+        function showLocationInfo(locationId) {
+            const locationData = {
+                'prometheus-cave': {
+                    name: 'Prometheus Cave',
+                    description: 'One of Georgia\'s most spectacular natural wonders, featuring a 1.4km underground walkway through 6 halls with stunning stalactites, stalagmites, and underground rivers.',
+                    highlights: ['6 underground halls', 'Colorful LED lighting', 'Optional boat ride on underground river', 'Perfect temperature year-round (14°C)'],
+                    tips: 'Wear comfortable walking shoes and bring a light jacket. The cave maintains 14°C temperature year-round.',
+                    duration: '1-1.5 hours',
+                    price: '15 GEL adults, 5 GEL children'
+                },
+                'sataplia-reserve': {
+                    name: 'Sataplia Nature Reserve',
+                    description: 'Unique nature reserve protecting 120-million-year-old dinosaur footprints and featuring a glass walkway through pristine forest canopy.',
+                    highlights: ['Real dinosaur footprints', 'Glass viewing platform', 'Forest canopy walkway', 'Small cave system', 'Visitor center with exhibits'],
+                    tips: 'Great for families with children. The glass walkway offers spectacular forest views.',
+                    duration: '1.5-2 hours',
+                    price: '20 GEL adults, 10 GEL children'
+                },
+                'bagrati-cathedral': {
+                    name: 'Bagrati Cathedral',
+                    description: 'Magnificent 11th-century cathedral and UNESCO World Heritage site offering panoramic views over Kutaisi and the Rioni River valley.',
+                    highlights: ['UNESCO World Heritage status', 'Panoramic city views', '11th-century architecture', 'Historical significance', 'Beautiful sunset views'],
+                    tips: 'Best visited in late afternoon for golden hour photography. Free entry.',
+                    duration: '45 minutes - 1 hour',
+                    price: 'Free entry'
+                },
+                'gelati-monastery': {
+                    name: 'Gelati Monastery',
+                    description: 'Medieval monastery complex founded in 1106, renowned for its Academy and exceptional Byzantine frescoes. UNESCO World Heritage site.',
+                    highlights: ['UNESCO World Heritage', 'Academy ruins', 'Original frescoes', 'Royal tombs', 'Peaceful gardens'],
+                    tips: 'Dress modestly. Photography inside may be restricted. Very peaceful atmosphere.',
+                    duration: '1-1.5 hours',
+                    price: '5 GEL entry fee'
+                },
+                'uplistsikhe-cave': {
+                    name: 'Uplistsikhe Cave Town',
+                    description: 'Ancient rock-hewn city dating back to the 1st millennium BC, featuring over 150 caves carved into rock, including halls, churches, and wine cellars.',
+                    highlights: ['Ancient rock-cut architecture', 'Theater and royal halls', 'Wine cellars', 'Christian basilica', 'Panoramic river views'],
+                    tips: 'Wear sturdy shoes and bring water. Can be hot in summer. Fascinating historical site.',
+                    duration: '1.5-2 hours',
+                    price: '15 GEL adults, 5 GEL students'
+                },
+                'svetitskhoveli-cathedral': {
+                    name: 'Svetitskhoveli Cathedral',
+                    description: 'Georgia\'s most sacred cathedral, built in the 11th century on the site where Christ\'s robe is believed to be buried. UNESCO World Heritage site.',
+                    highlights: ['Holiest site in Georgia', 'Christ\'s robe burial site', 'Stunning frescoes', 'Royal tombs', 'Architectural masterpiece'],
+                    tips: 'Dress respectfully. Photography inside may be limited. Very spiritual atmosphere.',
+                    duration: '45 minutes - 1 hour',
+                    price: 'Free entry'
+                }
+            };
+            
+            const info = locationData[locationId];
+            if (info) {
+                const content = `
+                    <div style="background: white; padding: 25px; border-radius: 20px; margin: 20px; max-width: 500px;">
+                        <h2 style="color: #8b6f47; margin-bottom: 15px;">${info.name}</h2>
+                        <p style="margin-bottom: 15px; line-height: 1.6;">${info.description}</p>
+                        
+                        <h3 style="color: #d4a574; margin-bottom: 10px;">✨ Highlights:</h3>
+                        <ul style="margin-bottom: 15px;">
+                            ${info.highlights.map(h => `<li>${h}</li>`).join('')}
+                        </ul>
+                        
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                            <p><strong>⏱️ Duration:</strong> ${info.duration}</p>
+                            <p><strong>💰 Price:</strong> ${info.price}</p>
+                        </div>
+                        
+                        <div style="background: #e7f3ff; padding: 15px; border-radius: 10px; border-left: 4px solid #0066cc;">
+                            <p><strong>💡 Pro Tip:</strong> ${info.tips}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Create and show location info modal
+                const modal = document.createElement('div');
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+                modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
+                modal.style.alignItems = 'center';
+                modal.style.zIndex = '1000';
+                modal.style.backdropFilter = 'blur(5px)';
+                
+                const modalContent = document.createElement('div');
+                modalContent.innerHTML = content;
+                modalContent.style.maxHeight = '80vh';
+                modalContent.style.overflowY = 'auto';
+                modalContent.style.position = 'relative';
+                
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '×';
+                closeBtn.style.position = 'absolute';
+                closeBtn.style.top = '15px';
+                closeBtn.style.right = '20px';
+                closeBtn.style.background = 'none';
+                closeBtn.style.border = 'none';
+                closeBtn.style.fontSize = '28px';
+                closeBtn.style.cursor = 'pointer';
+                closeBtn.style.color = '#666';
+                closeBtn.onclick = () => document.body.removeChild(modal);
+                
+                modalContent.appendChild(closeBtn);
+                modal.appendChild(modalContent);
+                modal.onclick = (e) => {
+                    if (e.target === modal) {
+                        document.body.removeChild(modal);
+                    }
+                };
+                
+                document.body.appendChild(modal);
+            }
+        }
     </script>
 </body>
 </html>
