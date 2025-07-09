@@ -534,6 +534,279 @@
             margin: 20px 0;
         }
         
+        .interactive-panel {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #d4a574;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interactive-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .panel-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .panel-title {
+            font-size: 1.8em;
+            color: #8b6f47;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            color: #8b6f47;
+            margin-bottom: 10px;
+        }
+        
+        .feature-description {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .weather-widget {
+            background: linear-gradient(135deg, #87CEEB 0%, #98D8E8 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .weather-widget::before {
+            content: '☁️';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2em;
+            opacity: 0.3;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .travel-calculator {
+            background: linear-gradient(135deg, #FFE4B5 0%, #F5DEB3 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .calculator-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #d4a574;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+        
+        .calculate-btn {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .calculate-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(139, 111, 71, 0.3);
+        }
+        
+        .result-display {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin: 0 10px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #d4a574;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalAppear 0.3s ease;
+        }
+        
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.7); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
         .map-image {
             width: 100%;
             max-width: 700px;
@@ -656,6 +929,20 @@
 </head>
 <body>
     <div class="scroll-indicator" id="scrollIndicator"></div>
+    <div class="notification" id="notification">📍 Location opened in Google Maps!</div>
+    <div class="modal" id="travelModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>🧭 Travel Planner</h2>
+            <div class="travel-calculator">
+                <h3>Distance & Time Calculator</h3>
+                <input type="text" id="fromLocation" class="calculator-input" placeholder="From (e.g., Tbilisi)">
+                <input type="text" id="toLocation" class="calculator-input" placeholder="To (e.g., Batumi)">
+                <button class="calculate-btn" onclick="calculateRoute()">Calculate Route</button>
+                <div id="routeResult" class="result-display" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <header>
             <h1>🇬🇪 Georgia Family Adventure</h1>
@@ -1538,6 +1825,186 @@
             document.body.style.opacity = '1';
             document.body.style.transition = 'opacity 0.5s ease-in-out';
         });
+        
+        // Function to open location in Google Maps
+        function openLocation(url, name) {
+            // Add click animation
+            event.currentTarget.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                event.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+            }, 100);
+            
+            // Show notification
+            showNotification(`📍 Opening ${name} in Google Maps!`);
+            
+            // Open in new window
+            window.open(url, '_blank');
+        }
+        
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Open travel modal
+        function openTravelModal() {
+            document.getElementById('travelModal').style.display = 'block';
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('travelModal').style.display = 'none';
+        }
+        
+        // Calculate route
+        function calculateRoute() {
+            const from = document.getElementById('fromLocation').value;
+            const to = document.getElementById('toLocation').value;
+            
+            if (!from || !to) {
+                alert('Please enter both locations');
+                return;
+            }
+            
+            // Simulate route calculation
+            const distances = {
+                'tbilisi-batumi': { distance: '360 km', time: '5.5 hours' },
+                'kutaisi-tbilisi': { distance: '250 km', time: '3.5 hours' },
+                'batumi-kutaisi': { distance: '150 km', time: '2.5 hours' },
+                'default': { distance: '200 km', time: '3 hours' }
+            };
+            
+            const key = `${from.toLowerCase()}-${to.toLowerCase()}`;
+            const result = distances[key] || distances['default'];
+            
+            document.getElementById('routeResult').innerHTML = `
+                <h4>🚗 Route: ${from} → ${to}</h4>
+                <p><strong>Distance:</strong> ${result.distance}</p>
+                <p><strong>Estimated Time:</strong> ${result.time}</p>
+                <p><strong>Fuel Cost:</strong> ~$25-40</p>
+            `;
+            document.getElementById('routeResult').style.display = 'block';
+        }
+        
+        // Show weather
+        function showWeather() {
+            const widget = document.getElementById('weatherWidget');
+            widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
+            
+            if (widget.style.display === 'block') {
+                // Simulate weather data
+                setTimeout(() => {
+                    document.getElementById('weatherData').innerHTML = `
+                        <div style="display: flex; justify-content: space-around; text-align: center;">
+                            <div>
+                                <h4>Tbilisi</h4>
+                                <div style="font-size: 2em;">☀️</div>
+                                <div>28°C</div>
+                                <div>Sunny</div>
+                            </div>
+                            <div>
+                                <h4>Batumi</h4>
+                                <div style="font-size: 2em;">🌦️</div>
+                                <div>24°C</div>
+                                <div>Partly Cloudy</div>
+                            </div>
+                            <div>
+                                <h4>Kutaisi</h4>
+                                <div style="font-size: 2em;">☁️</div>
+                                <div>26°C</div>
+                                <div>Cloudy</div>
+                            </div>
+                        </div>
+                    `;
+                }, 1000);
+            }
+        }
+        
+        // Toggle night mode
+        let nightMode = false;
+        function toggleNightMode() {
+            nightMode = !nightMode;
+            if (nightMode) {
+                document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.filter = 'invert(1) hue-rotate(180deg)';
+                });
+                showNotification('🌙 Night mode enabled');
+            } else {
+                document.body.style.filter = 'none';
+                document.querySelectorAll('img').forEach(img => {
+                    img.style.filter = 'none';
+                });
+                showNotification('☀️ Day mode enabled');
+            }
+        }
+        
+        // Share trip plan
+        function shareTripPlan() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Georgia Family Adventure - 8 Days',
+                    text: 'Check out this amazing 8-day Georgia travel itinerary!',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers without Web Share API
+                navigator.clipboard.writeText(window.location.href);
+                showNotification('🔗 Link copied to clipboard!');
+            }
+        }
+        
+        // Download PDF
+        function downloadPDF() {
+            showNotification('📎 PDF generation feature coming soon!');
+        }
+        
+        // Show budget calculator
+        function showBudgetCalculator() {
+            showNotification('💰 Budget calculator feature coming soon!');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('travelModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'p':
+                        e.preventDefault();
+                        downloadPDF();
+                        break;
+                    case 's':
+                        e.preventDefault();
+                        shareTripPlan();
+                        break;
+                    case 'n':
+                        e.preventDefault();
+                        toggleNightMode();
+                        break;
+                    case 'w':
+                        e.preventDefault();
+                        showWeather();
+                        break;
+                }
+            }
+        });
+        
+        // Add welcome message
+        setTimeout(() => {
+            showNotification('👋 Welcome to your Georgia adventure! Click on locations to explore.');
+        }, 2000);
     </script>
 </body>
 </html>
