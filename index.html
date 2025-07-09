@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgia Family Adventure - 8 Days</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fdf6f0 0%, #f5efe7 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            color: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(139, 111, 71, 0.4);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: shimmer 20s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.6em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        
+        .trip-overview {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-bottom: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .overview-item {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+        
+        .overview-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+        
+        .overview-item h3 {
+            color: #8b6f47;
+            margin-bottom: 10px;
+        }
+        
+        .route-map {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-bottom: 50px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .route-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .city-marker {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(139, 111, 71, 0.4);
+            position: relative;
+            margin: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .route-line {
+            height: 3px;
+            background: linear-gradient(90deg, #d4a574 0%, #8b6f47 100%);
+            flex: 1;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .route-line::after {
+            content: '🚗';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: drive 3s ease-in-out infinite;
+        }
+        
+        @keyframes drive {
+            0%, 100% { left: 0%; }
+            50% { left: 100%; }
+        }
+        
+        .day-container {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .day-container:nth-child(1) { animation-delay: 0.1s; }
+        .day-container:nth-child(2) { animation-delay: 0.2s; }
+        .day-container:nth-child(3) { animation-delay: 0.3s; }
+        .day-container:nth-child(4) { animation-delay: 0.4s; }
+        .day-container:nth-child(5) { animation-delay: 0.5s; }
+        .day-container:nth-child(6) { animation-delay: 0.6s; }
+        .day-container:nth-child(7) { animation-delay: 0.7s; }
+        .day-container:nth-child(8) { animation-delay: 0.8s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
+            color: white;
+            padding: 30px 40px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+        }
+        
+        .day-header h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        .day-location {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .day-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: none;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #d4a574 0%, #8b6f47 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #d4a574;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 5px rgba(139, 111, 71, 0.3);
+        }
+        
+        .time {
+            font-weight: bold;
+            color: #8b6f47;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .activity {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 165, 116, 0.1);
+        }
+        
+        .activity:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            transform: translateX(8px) scale(1.01);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .activity h3 {
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        
+        .activity p {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .highlight-card {
+            background: linear-gradient(135deg, #e9c893 0%, #d4a574 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+        }
+        
+        .highlight-card:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #eecfa0 0%, #d8aa7b 100%);
+        }
+        
+        .highlight-card h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .map-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder::before {
+            content: '📍';
+            position: absolute;
+            font-size: 48px;
+            opacity: 0.1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .driving-info {
+            background: linear-gradient(135deg, #e7f3ff 0%, #e1effd 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 6px solid #0066cc;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+        }
+        
+        .driving-info strong {
+            color: #0066cc;
+        }
+        
+        .accommodation {
+            background: linear-gradient(135deg, #fff4e6 0%, #fef3e4 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 6px solid #ff9800;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+        }
+        
+        .accommodation h4 {
+            color: #d4a574;
+            margin-bottom: 10px;
+        }
+        
+        .hotel-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hotel-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .map-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 15px;
+            margin: 25px auto;
+            display: block;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .map-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .photo-placeholder {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            height: 180px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(139, 111, 71, 0.3);
+        }
+        
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-placeholder:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-placeholder:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: #6c757d;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            margin-top: 50px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .city-marker:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 111, 71, 0.5);
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d4a574 0%, #8b6f47 100%);
+            transform-origin: 0%;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .route-visual {
+                flex-direction: column;
+            }
+            
+            .route-line {
+                width: 3px;
+                height: 50px;
+                margin: 10px 0;
+            }
+            
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .subtitle {
+                font-size: 1.3em;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .trip-overview {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+            
+            .day-content {
+                padding: 25px;
+            }
+            
+            .day-header {
+                padding: 20px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    <div class="container">
+        <header>
+            <h1>🇬🇪 Georgia Family Adventure</h1>
+            <p class="subtitle">8 Days Through Kutaisi, Tbilisi & Batumi</p>
+            <p class="subtitle">August 10-18 | 2 Families | 4 Adults + 2 Kids</p>
+        </header>
+        
+        <div class="trip-overview">
+            <div class="overview-item">
+                <h3>📅 Duration</h3>
+                <p>8 Days / 7 Nights</p>
+            </div>
+            <div class="overview-item">
+                <h3>🚗 Transport</h3>
+                <p>Self-Drive Rental Car</p>
+            </div>
+            <div class="overview-item">
+                <h3>👨‍👩‍👧‍👦 Group</h3>
+                <p>2 Families (6 people)</p>
+            </div>
+            <div class="overview-item">
+                <h3>💰 Budget</h3>
+                <p>$250-350/night accommodation</p>
+            </div>
+            <div class="overview-item">
+                <h3>✈️ Airports</h3>
+                <p>In & Out: Kutaisi</p>
+            </div>
+            <div class="overview-item">
+                <h3>🏔️ Highlights</h3>
+                <p>Nature, Culture, Wine</p>
+            </div>
+        </div>
+        
+        <div class="route-map">
+            <h2>Journey Route</h2>
+            <div class="route-visual">
+                <div class="city-marker">✈️ Kutaisi</div>
+                <div class="route-line"></div>
+                <div class="city-marker">🏛️ Tbilisi</div>
+                <div class="route-line"></div>
+                <div class="city-marker">🏖️ Batumi</div>
+                <div class="route-line"></div>
+                <div class="city-marker">✈️ Kutaisi</div>
+            </div>
+            <p style="margin-top: 20px; color: #6c757d;">Total Distance: ~1,000+ km | Self-drive adventure through Georgia's diverse landscapes</p>
+        </div>
+        
+        <!-- Day 1 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 1 - August 10</h2>
+                <p class="day-location">Kutaisi: Caves & Cathedrals</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">9:00 AM</div>
+                        <div class="activity">
+                            <h3>✈️ Arrival at Kutaisi Airport</h3>
+                            <p>Pick up rental car and start your Georgian adventure!</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="activity">
+                            <h3>🔦 Prometheus Cave</h3>
+                            <p>1.4 km underground walkway with stunning stalactites and optional boat ride. Perfect for kids! (1 hour tour)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">12:00 PM</div>
+                        <div class="activity">
+                            <h3>🦕 Sataplia Nature Reserve</h3>
+                            <p>Dinosaur footprints, glass viewing platform, and playground. Great for stretching legs! (1.5 hours)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">2:00 PM</div>
+                        <div class="activity">
+                            <h3>⛪ Bagrati Cathedral</h3>
+                            <p>11th-century cathedral with panoramic views over Kutaisi</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3:30 PM</div>
+                        <div class="activity">
+                            <h3>🏛️ Gelati Monastery (Optional)</h3>
+                            <p>UNESCO World Heritage site with beautiful medieval frescoes</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">6:00 PM</div>
+                        <div class="activity">
+                            <h3>🏨 Check-in & Evening Stroll</h3>
+                            <p>Explore Colchis Fountain and try your first khachapuri!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="driving-info">
+                    <strong>🚗 Driving:</strong> Airport → Prometheus Cave (25 km, 30 min) → Sataplia (10 km, 20 min) → Kutaisi (10 km, 20 min)
+                </div>
+                
+                <div class="highlights">
+                    <div class="highlight-card">
+                        <h4>🍞 Must Try</h4>
+                        <p>Khachapuri & Khinkali</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>👶 Kid-Friendly</h4>
+                        <p>All activities suitable for children</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4>📸 Photo Ops</h4>
+                        <p>Cathedral views & cave formations</p>
+                    </div>
+                </div>
+                
+                <div class="accommodation">
+                    <h4>🏨 Accommodation: Hotel Terrace Kutaisi</h4>
+                    <p>Family-friendly hotel in city center with spacious rooms and parking</p>
+                    <img class="hotel-image" src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hotel in Kutaisi">
+                </div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1145434/pexels-photo-1145434.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Cave Interior">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1002703/pexels-photo-1002703.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bagrati Cathedral">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Food">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Monastery View">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 2 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 2 - August 11</h2>
+                <p class="day-location">Road Trip to Tbilisi</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">8:00 AM</div>
+                        <div class="activity">
+                            <h3>🚗 Depart Kutaisi for Tbilisi</h3>
+                            <p>3.5-4 hour scenic drive on E60 highway</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="activity">
+                            <h3>🏛️ Uplistsikhe Cave Town</h3>
+                            <p>Ancient rock-cut city - like a giant natural playground! (1.5 hours exploration)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">1:00 PM</div>
+                        <div class="activity">
+                            <h3>⛪ Mtskheta (UNESCO Heritage)</h3>
+                            <p>Visit Svetitskhoveli Cathedral and optional Jvari Monastery with river views</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3:00 PM</div>
+                        <div class="activity">
+                            <h3>🏨 Arrive Tbilisi & Check-in</h3>
+                            <p>Settle into city center accommodation</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">5:00 PM</div>
+                        <div class="activity">
+                            <h3>🚡 Cable Car to Narikala Fortress</h3>
+                            <p>Fun ride with panoramic city views, explore fortress and Mother Georgia statue</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>🍷 Dinner in Old Town</h3>
+                            <p>Traditional Georgian feast with optional wine tasting</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="driving-info">
+                    <strong>🚗 Driving:</strong> Kutaisi → Tbilisi (250 km, 3.5-4 hours) with stops at Uplistsikhe and Mtskheta
+                </div>
+                
+                <div class="map-container">
+                    <h4>Route Map: Kutaisi to Tbilisi</h4>
+                    <iframe class="map-image" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d762351.6974470972!2d42.72708!3d42.00998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x40440cd7e64f626b%3A0x4f907964122d4ac2!2sKutaisi%2C%20Georgia!3m2!1d42.2679!2d42.6946!4m5!1s0x40440c73a0457c69%3A0x1e9d0a0e80f86521!2sTbilisi%2C%20Georgia!3m2!1d41.7151!2d44.8271!5e0!3m2!1sen!2sus!4v1690000000000!5m2!1sen!2sus" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="photo-gallery" style="margin-top: 20px;">
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Uplistsikhe Cave City">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mtskheta Cathedral">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Tbilisi Old Town">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Wine">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 3 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 3 - August 12</h2>
+                <p class="day-location">Tbilisi City Highlights</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">9:00 AM</div>
+                        <div class="activity">
+                            <h3>⛪ Holy Trinity Cathedral (Sameba)</h3>
+                            <p>One of the largest Orthodox cathedrals in the world</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:30 AM</div>
+                        <div class="activity">
+                            <h3>🌉 Bridge of Peace & Rike Park</h3>
+                            <p>Modern glass bridge, musical fountains, and playground</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">12:00 PM</div>
+                        <div class="activity">
+                            <h3>🏛️ Georgian National Museum or Dry Bridge Market</h3>
+                            <p>Choose between golden artifacts or quirky antiques</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">2:00 PM</div>
+                        <div class="activity">
+                            <h3>🍲 Lunch Break</h3>
+                            <p>Try khinkali properly - bite and sip!</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3:30 PM</div>
+                        <div class="activity">
+                            <h3>🎢 Mtatsminda Park</h3>
+                            <p>Take funicular railway up, enjoy amusement park rides and spectacular views</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>🎭 Dinner with Folk Show</h3>
+                            <p>Traditional music and dance performance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accommodation">
+                    <h4>🏨 Accommodation Options in Tbilisi</h4>
+                    <p>Stay in Old Town area - walking distance to attractions. Options: Rooms Hotel Tbilisi or central Airbnb apartment</p>
+                    <img class="hotel-image" src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tbilisi Hotel View">
+                </div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Holy Trinity Cathedral">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/3293148/pexels-photo-3293148.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bridge of Peace">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Mtatsminda Park">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Dance">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 4 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 4 - August 13</h2>
+                <p class="day-location">Kakheti Wine Region Day Trip</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">8:00 AM</div>
+                        <div class="activity">
+                            <h3>🚗 Drive to Kakheti</h3>
+                            <p>2-hour scenic drive to Georgia's wine country</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="activity">
+                            <h3>⛪ Bodbe Monastery</h3>
+                            <p>Hillside convent with gardens and valley views</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">11:00 AM</div>
+                        <div class="activity">
+                            <h3>🏘️ Signagi - City of Love</h3>
+                            <p>Walk cobbled streets and fortress walls with kids</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">1:00 PM</div>
+                        <div class="activity">
+                            <h3>🍷 Winery Visit & Lunch</h3>
+                            <p>Traditional qvevri wine tasting for adults, garden exploration for kids</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">4:00 PM</div>
+                        <div class="activity">
+                            <h3>🚗 Return to Tbilisi</h3>
+                            <p>Drive back through vineyard landscapes</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>🍽️ Light Dinner in Tbilisi</h3>
+                            <p>Pack for tomorrow's journey to Batumi</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-placeholder">🍇 Vineyard Views</div>
+                    <div class="photo-placeholder">🏺 Qvevri Cellars</div>
+                    <div class="photo-placeholder">🏰 Signagi Walls</div>
+                    <div class="photo-placeholder">🍷 Wine Tasting</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 5 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 5 - August 14</h2>
+                <p class="day-location">Journey to Batumi - Black Sea Coast</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">7:00 AM</div>
+                        <div class="activity">
+                            <h3>🚗 Early Departure to Batumi</h3>
+                            <p>360 km cross-country drive (5.5-6 hours)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="activity">
+                            <h3>☕ Rest Stop - Khashuri</h3>
+                            <p>Stretch legs, snacks, and restroom break</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">2:00 PM</div>
+                        <div class="activity">
+                            <h3>🏖️ Optional: Ureki Beach</h3>
+                            <p>Quick stop at magnetic black sand beach</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">4:00 PM</div>
+                        <div class="activity">
+                            <h3>🏨 Arrive Batumi & Check-in</h3>
+                            <p>Settle into seaside accommodation</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">5:30 PM</div>
+                        <div class="activity">
+                            <h3>🚴 Batumi Boulevard</h3>
+                            <p>Rent family bikes, see Alphabet Tower</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>💑 Ali & Nino Moving Statue</h3>
+                            <p>Watch the mesmerizing kinetic sculpture</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">8:00 PM</div>
+                        <div class="activity">
+                            <h3>🧀 Dinner - Adjarian Khachapuri</h3>
+                            <p>Try the famous boat-shaped cheese bread!</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">9:00 PM</div>
+                        <div class="activity">
+                            <h3>⛲ Dancing Fountains Show</h3>
+                            <p>Musical water and light display</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="driving-info">
+                    <strong>🚗 Driving:</strong> Tbilisi → Batumi (360 km, 5.5-6 hours) via Khashuri and Samtredia
+                </div>
+                
+                <div class="map-container">
+                    <h4>Route Map: Tbilisi to Batumi</h4>
+                    <iframe class="map-image" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1525087.9559999!2d42.3541!3d41.9908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x40440c73a0457c69%3A0x1e9d0a0e80f86521!2sTbilisi%2C%20Georgia!3m2!1d41.7151!2d44.8271!4m5!1s0x406786304ea2d221%3A0x7a3053a9e12ea967!2sBatumi%2C%20Georgia!3m2!1d41.6168!2d41.6367!5e0!3m2!1sen!2sus!4v1690000000001!5m2!1sen!2sus" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="accommodation">
+                    <h4>🏨 Accommodation: Batumi Waterfront</h4>
+                    <p>Modern apartment or hotel near Boulevard - Options: Radisson Blu Batumi or seafront Airbnb</p>
+                    <img class="hotel-image" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batumi Hotel">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 6 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 6 - August 15</h2>
+                <p class="day-location">Batumi City Fun</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="activity">
+                            <h3>🌳 6 May Park</h3>
+                            <p>Lake with pedal boats and playground</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">12:00 PM</div>
+                        <div class="activity">
+                            <h3>🐬 Batumi Dolphinarium</h3>
+                            <p>30-minute dolphin show - kids' favorite!</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">1:30 PM</div>
+                        <div class="activity">
+                            <h3>🍽️ Lunch in the Park</h3>
+                            <p>Try Ajapsandali or fresh summer fruits</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3:00 PM</div>
+                        <div class="activity">
+                            <h3>🏖️ Beach Time or Botanical Garden</h3>
+                            <p>Choose between pebble beach fun or lush garden trails</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">5:30 PM</div>
+                        <div class="activity">
+                            <h3>🚡 Argo Cable Car</h3>
+                            <p>Panoramic sunset views from Anuria Hill</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>🎨 Old Town Exploration</h3>
+                            <p>Street art, sculptures, and photo ops</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">8:00 PM</div>
+                        <div class="activity">
+                            <h3>🐟 Seafood Dinner</h3>
+                            <p>Black Sea fish specialties</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1007025/pexels-photo-1007025.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Batumi Boulevard">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/64219/dolphin-marine-mammals-water-sea-64219.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dolphin Show">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1007025/pexels-photo-1007025.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Beach Scene">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1545743/pexels-photo-1545743.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Cable Car View">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 7 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 7 - August 16</h2>
+                <p class="day-location">Adjara Region Adventure</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">9:00 AM</div>
+                        <div class="activity">
+                            <h3>🚗 Drive to Mountains</h3>
+                            <p>30 km inland along Ajaristskali River</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:00 AM</div>
+                        <div class="activity">
+                            <h3>💦 Makhuntseti Waterfall</h3>
+                            <p>Highest waterfall in Adjara with refreshing mist</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">10:30 AM</div>
+                        <div class="activity">
+                            <h3>🌉 Queen Tamara's Bridge</h3>
+                            <p>12th-century stone arch bridge - perfect photos!</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">12:00 PM</div>
+                        <div class="activity">
+                            <h3>🍷 Adjarian Wine House</h3>
+                            <p>Wine tasting and traditional Upper Adjara lunch</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3:00 PM</div>
+                        <div class="activity">
+                            <h3>🏰 Gonio Fortress</h3>
+                            <p>Ancient Roman fort on the coast</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>🎭 Farewell Folklore Dinner</h3>
+                            <p>Georgian polyphonic singing and dance show</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">9:30 PM</div>
+                        <div class="activity">
+                            <h3>🎡 Last Boulevard Walk</h3>
+                            <p>Final carnival rides and sea breeze</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1666021/pexels-photo-1666021.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Waterfall">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1637166/pexels-photo-1637166.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Stone Bridge">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Vineyard">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Folk Dancing">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 8 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 8 - August 17</h2>
+                <p class="day-location">Return to Kutaisi</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">8:00 AM</div>
+                        <div class="activity">
+                            <h3>🚗 Depart Batumi</h3>
+                            <p>150 km drive back to Kutaisi (2.5 hours)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">11:00 AM</div>
+                        <div class="activity">
+                            <h3>🛶 Optional: Martvili Canyon</h3>
+                            <p>Emerald-green river boat trip through mossy gorge</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">1:00 PM</div>
+                        <div class="activity">
+                            <h3>🍽️ Lunch in Kutaisi</h3>
+                            <p>Try Imeretian specialties</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">3:00 PM</div>
+                        <div class="activity">
+                            <h3>🛍️ Green Bazaar</h3>
+                            <p>Buy churchkhela and spices as souvenirs</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">5:00 PM</div>
+                        <div class="activity">
+                            <h3>🏨 Check-in Near Airport</h3>
+                            <p>Final night accommodation</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 PM</div>
+                        <div class="activity">
+                            <h3>🍷 Farewell Dinner</h3>
+                            <p>Imeretian khachapuri and final toasts - Gaumarjos!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accommodation">
+                    <h4>🏨 Final Night: Best Western Kutaisi</h4>
+                    <p>Airport hotel recommended for easy morning departure - 10 minutes to airport</p>
+                    <img class="hotel-image" src="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Airport Hotel">
+                </div>
+                
+                <div class="photo-gallery">
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1666021/pexels-photo-1666021.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Martvili Canyon">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Restaurant">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Market Spices">
+                    </div>
+                    <div class="photo-placeholder">
+                        <img src="https://images.pexels.com/photos/1407846/pexels-photo-1407846.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Wine">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Day 9 -->
+        <div class="day-container">
+            <div class="day-header">
+                <h2>Day 9 - August 18</h2>
+                <p class="day-location">Departure Day</p>
+            </div>
+            <div class="day-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="time">6:00 AM</div>
+                        <div class="activity">
+                            <h3>⏰ Early Wake-up</h3>
+                            <p>Prepare for departure</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">7:00 AM</div>
+                        <div class="activity">
+                            <h3>🚗 Return Rental Car</h3>
+                            <p>Drop off at airport office</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="time">9:00 AM</div>
+                        <div class="activity">
+                            <h3>✈️ Flight Departure</h3>
+                            <p>Goodbye Georgia - Gilotsavt!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <h3 style="color: #8b6f47;">Trip Summary</h3>
+                    <p style="font-size: 1.2em; margin-top: 20px;">
+                        🏔️ Mountains to 🏖️ Sea<br>
+                        🍷 Wine Tastings & 🧀 Khachapuri<br>
+                        🐬 Dolphins & 🦕 Dinosaurs<br>
+                        ⛪ Ancient Churches & 🏰 Fortresses<br>
+                        💑 Family Memories to Last a Lifetime!
+                    </p>
+                    
+                    <div class="photo-gallery" style="margin-top: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        <div class="photo-placeholder" style="height: 200px;">
+                            <img src="https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Georgian Landscape">
+                        </div>
+                        <div class="photo-placeholder" style="height: 200px;">
+                            <img src="https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Family Travel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Safe travels through Sakartvelo! 🇬🇪</p>
+            <p>Created with ❤️ for your Georgian family adventure</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollIndicator').style.transform = `scaleX(${scrolled}%)`;
+        });
+        
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all day containers
+        document.querySelectorAll('.day-container').forEach(container => {
+            observer.observe(container);
+        });
+        
+        // Add hover effects to images
+        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
+            placeholder.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.08) translateY(-5px)';
+            });
+            
+            placeholder.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+        
+        // Add click handlers for highlight cards
+        document.querySelectorAll('.highlight-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1.08) translateY(-5px)';
+                }, 150);
+            });
+        });
+        
+        // Parallax effect for header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+        });
+    </script>
+</body>
+</html>
