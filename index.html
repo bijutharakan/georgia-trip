@@ -12,9 +12,9 @@
         }
         
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #fdf6f0 0%, #f5efe7 100%);
-            color: #333;
+            font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f7fee7 100%);
+            color: #1f2937;
             line-height: 1.6;
             min-height: 100vh;
             opacity: 0;
@@ -30,15 +30,15 @@
         
         header {
             text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            padding: 80px 0;
+            background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
             color: white;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(139, 111, 71, 0.4);
-            margin-bottom: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(5, 150, 105, 0.3);
+            margin-bottom: 60px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
         
         header::before {
@@ -49,8 +49,25 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: shimmer 20s linear infinite;
+            background-size: 40px 40px;
+            animation: shimmer 25s linear infinite;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
         @keyframes shimmer {
@@ -59,66 +76,129 @@
         }
         
         h1 {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .subtitle {
-            font-size: 1.6em;
+            font-size: 1.7em;
             opacity: 0.95;
             position: relative;
             z-index: 1;
-            font-weight: 300;
-            margin-bottom: 8px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-stat {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-stat:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hero-stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .hero-stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
         }
         
         .trip-overview {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            margin-bottom: 50px;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(5, 150, 105, 0.1);
+            margin-bottom: 60px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(16, 185, 129, 0.1);
         }
         
         .overview-item {
             text-align: center;
-            padding: 25px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 20px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(212, 165, 116, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .overview-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .overview-item:hover::before {
+            transform: scale(1);
         }
         
         .overview-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(5, 150, 105, 0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
         }
         
         .overview-item h3 {
-            color: #8b6f47;
-            margin-bottom: 10px;
+            color: #047857;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+            z-index: 1;
         }
         
         .route-map {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            margin-bottom: 50px;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(5, 150, 105, 0.1);
+            margin-bottom: 60px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            position: relative;
+            overflow: hidden;
         }
         
         .route-visual {
@@ -130,48 +210,56 @@
         }
         
         .city-marker {
-            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 18px 35px;
+            padding: 20px 40px;
             border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(139, 111, 71, 0.4);
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
             position: relative;
-            margin: 15px;
-            transition: all 0.3s ease;
+            margin: 20px;
+            transition: all 0.4s ease;
             cursor: pointer;
             user-select: none;
+            font-size: 1.1em;
         }
         
         .route-line {
-            height: 3px;
-            background: linear-gradient(90deg, #d4a574 0%, #8b6f47 100%);
+            height: 4px;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
             flex: 1;
-            margin: 0 10px;
+            margin: 0 15px;
             position: relative;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.2);
         }
         
         .route-line:hover {
-            height: 5px;
-            background: linear-gradient(90deg, #8b6f47 0%, #d4a574 100%);
-            box-shadow: 0 2px 10px rgba(139, 111, 71, 0.5);
+            height: 6px;
+            background: linear-gradient(90deg, #0d9488 0%, #10b981 100%);
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
+            transform: translateY(-1px);
         }
         
         .route-line::after {
             content: '🚗';
             position: absolute;
-            top: -15px;
+            top: -18px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 24px;
-            animation: drive 3s ease-in-out infinite;
+            font-size: 28px;
+            animation: drive 4s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
         
         @keyframes drive {
-            0%, 100% { left: 0%; }
-            50% { left: 100%; }
+            0% { left: 0%; transform: translateX(0%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(5deg); }
+            50% { left: 50%; transform: translateX(-50%) rotate(0deg); }
+            75% { transform: translateX(-50%) rotate(-5deg); }
+            100% { left: 100%; transform: translateX(-100%) rotate(0deg); }
         }
         
         .day-container {
@@ -198,13 +286,13 @@
         }
         
         .day-header {
-            background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             color: white;
-            padding: 30px 40px;
-            border-radius: 20px 20px 0 0;
+            padding: 35px 45px;
+            border-radius: 25px 25px 0 0;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.3);
         }
         
         .day-header h2 {
@@ -219,11 +307,11 @@
         
         .day-content {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 45px;
+            border-radius: 0 0 25px 25px;
+            box-shadow: 0 10px 35px rgba(16, 185, 129, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(16, 185, 129, 0.1);
             border-top: none;
         }
         
@@ -238,8 +326,9 @@
             left: 15px;
             top: 0;
             bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #d4a574 0%, #8b6f47 100%);
+            width: 4px;
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            border-radius: 2px;
         }
         
         .timeline-item {
@@ -251,36 +340,36 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -25px;
+            left: -26px;
             top: 5px;
-            width: 12px;
-            height: 12px;
-            background: #d4a574;
+            width: 14px;
+            height: 14px;
+            background: #10b981;
             border-radius: 50%;
             border: 3px solid white;
-            box-shadow: 0 2px 5px rgba(139, 111, 71, 0.3);
+            box-shadow: 0 3px 8px rgba(16, 185, 129, 0.3);
         }
         
         .time {
-            font-weight: bold;
-            color: #8b6f47;
-            margin-bottom: 5px;
+            font-weight: 600;
+            color: #047857;
+            margin-bottom: 8px;
             font-size: 1.1em;
         }
         
         .activity {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.1);
         }
         
         .activity:hover {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            transform: translateX(8px) scale(1.01);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
         }
         
         .activity h3 {
@@ -301,20 +390,20 @@
         }
         
         .highlight-card {
-            background: linear-gradient(135deg, #e9c893 0%, #d4a574 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 25px;
-            border-radius: 18px;
+            padding: 28px;
+            border-radius: 20px;
             text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
         }
         
         .highlight-card:hover {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-            background: linear-gradient(135deg, #eecfa0 0%, #d8aa7b 100%);
+            transform: scale(1.10) translateY(-8px);
+            box-shadow: 0 20px 50px rgba(5, 150, 105, 0.4);
+            background: linear-gradient(135deg, #0d9488 0%, #047857 100%);
         }
         
         .highlight-card h4 {
@@ -357,30 +446,31 @@
         }
         
         .driving-info {
-            background: linear-gradient(135deg, #e7f3ff 0%, #e1effd 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 25px;
-            border-left: 6px solid #0066cc;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
-        }
-        
-        .driving-info strong {
-            color: #0066cc;
-        }
-        
-        .accommodation {
-            background: linear-gradient(135deg, #fff4e6 0%, #fef3e4 100%);
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
             padding: 25px;
             border-radius: 15px;
             margin-top: 30px;
-            border-left: 6px solid #ff9800;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+            border-left: 6px solid #059669;
+            box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2);
+        }
+        
+        .driving-info strong {
+            color: #047857;
+        }
+        
+        .accommodation {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 30px;
+            border-radius: 18px;
+            margin-top: 35px;
+            border-left: 6px solid #10b981;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.2);
         }
         
         .accommodation h4 {
-            color: #d4a574;
-            margin-bottom: 10px;
+            color: #047857;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
         
         .hotel-image {
@@ -398,21 +488,20 @@
         }
         
         .location-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border: 2px solid #d4a574;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border: 2px solid #10b981;
+            border-radius: 18px;
+            padding: 25px;
+            margin: 20px 0;
             transition: all 0.3s ease;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
         }
         
         .location-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
-            border-color: #8b6f47;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
+            border-color: #059669;
         }
         
         .location-card::before {
@@ -422,7 +511,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
             transform: scale(0);
             transition: transform 0.3s ease;
         }
@@ -451,8 +540,8 @@
         
         .location-name {
             font-size: 1.3em;
-            font-weight: bold;
-            color: #8b6f47;
+            font-weight: 600;
+            color: #047857;
             margin: 0;
         }
         
@@ -478,28 +567,58 @@
         }
         
         .location-btn {
-            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-size: 0.9em;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        .location-icon-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            margin: 0 5px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
         
         .location-btn:hover {
-            background: linear-gradient(135deg, #8b6f47 0%, #d4a574 100%);
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(139, 111, 71, 0.3);
+            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
+        }
+        
+        .location-icon-btn:hover {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+            transform: scale(1.15) translateY(-2px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.4);
         }
         
         .location-btn:active {
             transform: scale(0.95);
+        }
+        
+        .location-icon-btn:active {
+            transform: scale(0.9);
         }
         
         .coordinates-display {
@@ -682,7 +801,7 @@
         }
         
         .calculate-btn {
-            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
             padding: 12px 25px;
@@ -820,23 +939,23 @@
             position: fixed;
             bottom: 90px;
             right: 20px;
-            background: linear-gradient(135deg, #e91e63 0%, #ad1457 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
+            width: 65px;
+            height: 65px;
+            font-size: 26px;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
             animation: pulse 2s infinite;
         }
         
         .floating-info-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
         }
         
         .quick-info-panel {
@@ -868,9 +987,9 @@
         }
         
         .quick-info-item:hover {
-            background: rgba(212, 165, 116, 0.1);
-            border-radius: 10px;
-            padding: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            padding: 12px;
         }
         
         .quick-info-item:last-child {
@@ -878,9 +997,9 @@
         }
         
         .quick-info-title {
-            font-weight: bold;
-            color: #8b6f47;
-            margin-bottom: 5px;
+            font-weight: 600;
+            color: #047857;
+            margin-bottom: 6px;
         }
         
         .quick-info-desc {
@@ -911,19 +1030,19 @@
         }
         
         .photo-placeholder {
-            background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
-            height: 180px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            height: 190px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 6px 20px rgba(139, 111, 71, 0.3);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
         }
         
         .photo-placeholder img {
@@ -939,8 +1058,8 @@
         }
         
         .photo-placeholder:hover {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transform: scale(1.10) translateY(-8px);
+            box-shadow: 0 15px 40px rgba(5, 150, 105, 0.4);
         }
         
         footer {
@@ -955,8 +1074,9 @@
         }
         
         .city-marker:hover {
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 10px 25px rgba(139, 111, 71, 0.5);
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(5, 150, 105, 0.4);
+            background: linear-gradient(135deg, #0d9488 0%, #047857 100%);
         }
         
         .scroll-indicator {
@@ -1117,7 +1237,7 @@
                         <div class="activity">
                             <h3>🔦 Prometheus Cave</h3>
                             <p>1.4 km underground walkway with stunning stalactites and optional boat ride. Perfect for kids! (1 hour tour)</p>
-                            <div class="location-card" onclick="openLocation('https://goo.gl/maps/XYZ123', 'Prometheus Cave')">
+                            <div class="location-card">
                                 <div class="location-header">
                                     <div class="location-icon">🔦</div>
                                     <div class="location-info">
@@ -1127,9 +1247,10 @@
                                 </div>
                                 <div class="location-description">Spectacular underground cave system with colorful lighting and boat tours</div>
                                 <div class="location-actions">
-                                    <button onclick="openLocation('42.3733,42.6014', 'Prometheus Cave')" class="location-btn">🗺️ View on Maps</button>
-                                    <a href="https://www.google.com/search?q=Prometheus+Cave+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
-                                    <button onclick="showLocationInfo('prometheus-cave')" class="location-btn">ℹ️ Info</button>
+                                    <button onclick="openLocation('42.3733,42.6014', 'Prometheus Cave')" class="location-icon-btn" title="View on Maps">🗺️</button>
+                                    <a href="https://www.google.com/search?q=Prometheus+Cave+Georgia+reviews" target="_blank" class="location-icon-btn" title="Reviews">⭐</a>
+                                    <button onclick="showEnhancedLocationInfo('prometheus-cave')" class="location-icon-btn" title="Detailed Info">ℹ️</button>
+                                    <button onclick="shareLocation('Prometheus Cave')" class="location-icon-btn" title="Share">📱</button>
                                 </div>
                             </div>
                         </div>
@@ -1139,7 +1260,7 @@
                         <div class="activity">
                             <h3>🦕 Sataplia Nature Reserve</h3>
                             <p>Dinosaur footprints, glass viewing platform, and playground. Great for stretching legs! (1.5 hours)</p>
-                            <div class="location-card" onclick="openLocation('https://goo.gl/maps/ABC456', 'Sataplia Nature Reserve')">
+                            <div class="location-card">
                                 <div class="location-header">
                                     <div class="location-icon">🦕</div>
                                     <div class="location-info">
@@ -1149,9 +1270,10 @@
                                 </div>
                                 <div class="location-description">Unique nature reserve with dinosaur footprints and glass walkway over forest canopy</div>
                                 <div class="location-actions">
-                                    <button onclick="openLocation('42.3342,42.5833', 'Sataplia Nature Reserve')" class="location-btn">🗺️ View on Maps</button>
-                                    <a href="https://www.google.com/search?q=Sataplia+Nature+Reserve+Georgia+reviews" target="_blank" class="location-btn">⭐ Reviews</a>
-                                    <button onclick="showLocationInfo('sataplia-reserve')" class="location-btn">ℹ️ Info</button>
+                                    <button onclick="openLocation('42.3342,42.5833', 'Sataplia Nature Reserve')" class="location-icon-btn" title="View on Maps">🗺️</button>
+                                    <a href="https://www.google.com/search?q=Sataplia+Nature+Reserve+Georgia+reviews" target="_blank" class="location-icon-btn" title="Reviews">⭐</a>
+                                    <button onclick="showEnhancedLocationInfo('sataplia-reserve')" class="location-icon-btn" title="Detailed Info">ℹ️</button>
+                                    <button onclick="shareLocation('Sataplia Nature Reserve')" class="location-icon-btn" title="Share">📱</button>
                                 </div>
                             </div>
                         </div>
@@ -2543,11 +2665,47 @@
                 },
                 'sataplia-reserve': {
                     name: 'Sataplia Nature Reserve',
+                    subtitle: 'Dinosaur Footprints & Glass Walkway',
+                    coordinates: '42.3342°N, 42.5833°E',
+                    rating: 4.6,
                     description: 'Unique nature reserve protecting 120-million-year-old dinosaur footprints and featuring a glass walkway through pristine forest canopy.',
-                    highlights: ['Real dinosaur footprints', 'Glass viewing platform', 'Forest canopy walkway', 'Small cave system', 'Visitor center with exhibits'],
+                    highlights: [
+                        { icon: '🦕', title: 'Real Dinosaur Footprints', desc: '120-million-year-old traces' },
+                        { icon: '🌿', title: 'Glass Viewing Platform', desc: 'Canopy walkway experience' },
+                        { icon: '🏞️', title: 'Forest Canopy Walk', desc: 'Spectacular tree-top views' },
+                        { icon: '🕳️', title: 'Small Cave System', desc: 'Additional exploration' }
+                    ],
+                    stats: [
+                        { value: '120M', label: 'Years Old' },
+                        { value: '20GEL', label: 'Entry Fee' },
+                        { value: '2hrs', label: 'Duration' },
+                        { value: '4.6', label: 'Rating' }
+                    ],
                     tips: 'Great for families with children. The glass walkway offers spectacular forest views.',
-                    duration: '1.5-2 hours',
-                    price: '20 GEL adults, 10 GEL children'
+                    price: '20 GEL adults, 10 GEL children',
+                    images: ['Dinosaur footprints', 'Glass walkway', 'Forest canopy', 'Cave entrance']
+                },
+                'gelati-monastery': {
+                    name: 'Gelati Monastery',
+                    subtitle: 'Medieval Academy of Georgia',
+                    coordinates: '42.2956°N, 42.7706°E',
+                    rating: 4.7,
+                    description: 'Medieval monastery complex founded in 1106, renowned for its Academy and exceptional Byzantine frescoes. UNESCO World Heritage site representing the golden age of medieval Georgia.',
+                    highlights: [
+                        { icon: '🏛️', title: 'UNESCO World Heritage', desc: 'Protected cultural site' },
+                        { icon: '📚', title: 'Medieval Academy', desc: 'Historical center of learning' },
+                        { icon: '🎨', title: 'Original Frescoes', desc: 'Byzantine masterpieces' },
+                        { icon: '👑', title: 'Royal Tombs', desc: 'Georgian kings buried here' }
+                    ],
+                    stats: [
+                        { value: '917', label: 'Years Old' },
+                        { value: 'UNESCO', label: 'Heritage Site' },
+                        { value: '1hr', label: 'Duration' },
+                        { value: '5GEL', label: 'Entry Fee' }
+                    ],
+                    tips: 'Dress modestly. Photography inside may be restricted. Very peaceful atmosphere perfect for contemplation.',
+                    price: '5 GEL entry fee',
+                    images: ['Monastery exterior', 'Byzantine frescoes', 'Academy ruins', 'Royal tombs']
                 },
                 'bagrati-cathedral': {
                     name: 'Bagrati Cathedral',
