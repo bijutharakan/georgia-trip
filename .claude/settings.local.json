@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(/Users/moonwalker/Projects/personal-projects/georgia-trip/check_images.sh:*)",
+      "Bash(grep:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": []
+  }
+}
