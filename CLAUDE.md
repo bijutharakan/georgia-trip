@@ -1,0 +1,1 @@
+- Reminder to use my name in commits instead of Claude's default commit identifier
